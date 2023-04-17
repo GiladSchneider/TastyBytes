@@ -1,0 +1,63 @@
+{% extends "main_template.html" %}
+
+{% block content %}
+<div class="container-fluid" style="padding: 50px;">
+    <form method="post" enctype="multipart/form-data">
+        <!-- food name -->
+        <div class="form-group">            
+            <label for="name">Recipe Name</label>
+            <input class="form-control" id="name" name="name" value="{{recipe.name}}" >
+        </div>
+        <br>
+        
+        <!-- food description -->
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" class="form-control" id="description" rows="3">{{recipe.description}}</textarea>
+        </div>
+        <br>
+
+        <!-- food image -->
+        <div class="form-group">
+            <label>Upload New Image: </label>    
+            <input name="image" class="form-control-file" type="file" id="image">
+        </div>
+        <br>
+
+        <!-- ingredients -->
+        <div class="form-group">
+            <label>Ingredients</label>
+            <textarea name="ingredients" class="form-control" id="ingredients" rows="3">{{recipe.ingredients}}</textarea>
+        </div>
+        <br>
+
+        <!-- preperation instructions -->
+        <div class="form-group">
+            <label>Preperation Instructions</label>
+            <textarea name="instructions" class="form-control" rows="3" id="instructions">{{recipe.instructions}}</textarea>
+        </div>
+        <br>
+
+        <!-- submit button -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" value="submit" name="btn_val">Submit Changes</button>
+            <button type="submit" class="btn btn-secondary" value="cancel" name="btn_val">Cancel Changes</button>
+            <button type="submit" class="btn btn-danger" value="delete" name="btn_val">Delete Recipe</button>
+        </div>
+
+    </form>
+</div>
+
+<!-- Form Validation WORK IN PROGRESS, USE REGEX -->
+<script>
+    let form = document.querySelector('form');
+    form.addEventListener("submit", () =>{
+        const name = form.elements.name.value;
+        const description = form.elements.description.value;
+        const image = form.elements.image.value;
+        const ingredients = form.elements.ingredients.value;
+        const preperation = form.elements.preperation.value;
+    })
+</script>
+
+{% endblock content %}

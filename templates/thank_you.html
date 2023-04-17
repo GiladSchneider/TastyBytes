@@ -1,0 +1,21 @@
+{% extends "main_template.html" %}
+
+{% block content %}
+<center style="background-color: #FBD1A2;">
+<div class="container" style="padding: 50px;">
+    <h1>Success! Thank You!</h1>
+
+    <!-- If the recipe_id is not -1 -->
+    {% if recipe_id != "-1" %}
+        <!-- two buttons: return home, veiw recipe -->
+        <a href="/home"><button type="button" class="btn" style="background-color: white;">Return Home</button></a>
+        <a href="/recipe/{{recipe_id}}"><button type="button" class="btn" style="background-color: white;">View Recipe</button></a>
+    {% else %}
+        <!-- If you did not add a recipe -->
+        <a href="/home"><button type="button" class="btn" style="background-color: white;">Return Home</button></a>
+    {% endif %}
+
+</center>
+
+
+{% endblock content %}

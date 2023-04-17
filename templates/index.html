@@ -1,0 +1,64 @@
+{% extends "main_template.html" %}
+
+{% block content %}
+<center>
+<div class="jumbotron jumbotron-fluid" style="padding: 50px; font-family: 'Gill Sans';">
+    <div class="container">
+      <h1 class="display-4" style="color: black">Tasty Bytes</h1>
+      <p class="lead" style="color: black">The best way to find and share recipes</p>
+    </div>    
+</div>
+
+<input class="form-control" type="search" placeholder="I'm in the mood for..." style="width: 400px; font-family: 'Gill Sans'" id="searchBox">
+<br>
+
+<div class="container">
+
+    {% for recipe in recipes %}
+    <div class="card text-center" style="width: 18rem; background-color: #1D4E89; border: 0px; margin-bottom: 30px;">
+        <img class="card-img-top" src="/static/food_pics/{{recipe.id}}.jpg" alt="">
+        <div class="card-body">
+            <h5 class="card-title" style="color: white;">{{recipe.name}}</h5>
+            <p class="card-text" style="color: #00B2CA">{{recipe.description}}</p>
+            <a href="/recipe/{{recipe.id}}" class="btn btn-primary" style="background-color: #1D4E89; border-color: white;">View</a>
+        </div>
+    </div> 
+    {% endfor %}
+    <br>
+
+</div>
+</center>
+
+<!-- search box functionality -->
+<script>
+    // once the window has loaded
+    window.onload = function() {
+        // save the searchbox element
+        let searchBox = document.getElementById("searchBox");
+        // if something is searched
+        searchBox.addEventListener("keyup", e => {
+            if (e.key === "Enter") {
+                let txt = searchBox.value;
+                txt = txt.toLowerCase();
+
+                // iterate through the cards
+                let cards = document.getElementsByClassName("card");
+                for (let c of cards) {
+                    let title = c.childNodes[3].childNodes[1].textContent;
+                    title = title.toLowerCase();
+                    // hide all cards that do not match the search
+                    if (!title.includes(txt)) {
+                        c.style.display = 'none';
+                    }
+                    // show all cards that do match the search
+                    else {
+                        c.style.display = '';
+                    }
+                };
+            }
+        })
+    }
+
+</script>
+
+{% endblock content %}

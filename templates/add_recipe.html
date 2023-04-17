@@ -1,0 +1,64 @@
+{% extends "main_template.html" %}
+
+{% block content %}
+<div class="container-fluid" style="padding: 50px;">
+    <form method="post" enctype="multipart/form-data">
+        <!-- food name -->
+        <div class="form-group">            
+            <label for="name">Recipe Name</label>
+            <input class="form-control" id="name" placeholder="I am making..." name="name">
+        </div>
+        <br>
+        
+        <!-- food description -->
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" class="form-control" id="description" rows="3" placeholder="I would describe it as..."></textarea>
+        </div>
+        <br>
+
+        <!-- food image -->
+        <div class="form-group">
+            <label>Upload Image: </label>    
+            <input name="image" class="form-control-file" type="file" id="image">
+        </div>
+        <br>
+
+        <!-- ingredients -->
+        <div class="form-group">
+            <label>Ingredients</label>
+            <textarea name="ingredients" class="form-control" id="ingredients" rows="3" placeholder="Salt &#10;Pepper &#10;Olive Oil &#10;..."></textarea>
+        </div>
+        <br>
+
+        <!-- preperation instructions -->
+        <div class="form-group">
+            <label>Preperation Instructions</label>
+            <textarea name="instructions" class="form-control" rows="3" id="instructions" placeholder="To start making this..."></textarea>
+        </div>
+        <br>
+
+        <!-- submit button -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Add Recipe</button>
+        </div>
+
+    </form>
+</div>
+
+<!-- Form Validation WORK IN PROGRESS, USE REGEX -->
+<script>
+    let name = document.getElementById('name');
+    name.focus()
+
+    let form = document.querySelector('form');
+    form.addEventListener("submit", () =>{
+        const name = form.elements.name.value;
+        const description = form.elements.description.value;
+        const image = form.elements.image.value;
+        const ingredients = form.elements.ingredients.value;
+        const preperation = form.elements.preperation.value;
+    })
+</script>
+
+{% endblock content %}
