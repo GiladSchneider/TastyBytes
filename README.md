@@ -2,9 +2,7 @@
 Tasty Bytes is the best way to find and share recipes!
 
 ### Stack
-Front End: HTMl, CSS, Javascript \newline
-  Backend: Python (Flask) \newline
- Database: mySQL
+Front End: HTMl, CSS, Javascript \ Backend: Python (Flask) \ Database: mySQL
  
  ### Features
  1. Add recipes with a title, description, image, ingredients list, and preperation instructions.
