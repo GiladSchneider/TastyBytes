@@ -2,8 +2,8 @@
 Tasty Bytes is the best way to find and share recipes!
 
 ### Stack
-Front End: HTMl, CSS, Javascript
-  Backend: Python (Flask)
+Front End: HTMl, CSS, Javascript \newline
+  Backend: Python (Flask) \newline
  Database: mySQL
  
  ### Features
