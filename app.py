@@ -1,5 +1,6 @@
 import flask
 import pymysql
+import os
 
 # create the app object
 app = flask.Flask(__name__)
@@ -92,6 +93,10 @@ def edit_recipe(recipe_id):
             sql_query = """DELETE FROM recipes WHERE id={}""".format(recipe_id)
             cursor.execute(sql_query)
             connection.commit()
+
+            # delete the image
+            os.remove('static/food_pics/{}.jpg'.format(recipe_id))
+
             # redirect to the thank_you page, pass -1 as the recipe_id
             return flask.redirect(flask.url_for('thank_you', recipe_id=-1))
     
@@ -106,6 +111,11 @@ def edit_recipe(recipe_id):
         update_sql = """UPDATE recipes SET name = "{}", description = "{}", ingredients = "{}", instructions = "{}" WHERE id = {}""".format(name, description, ingredients, instructions, recipe_id)
         cursor.execute(update_sql)
         connection.commit()
+
+        # save the image
+        if image.filename != "":
+            image.save('static/food_pics/{}.jpg'.format(recipe_id))
+
         # change to the recipe page
         return flask.redirect(flask.url_for('recipe', recipe_id=recipe_id))
                                            
